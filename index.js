@@ -18,16 +18,23 @@ function playAudio(char){
     }
 }
 
+function drumButAnimat(char){
+    document.getElementsByClassName(char)[0].classList.add("pressed");
+    setTimeout(function(){document.getElementsByClassName(char)[0].classList.remove("pressed")},100);
+}
+
 var drum_button_arr = document.querySelectorAll(".drum");
 var drum_count = drum_button_arr.length;
 for(var i = 0; i < drum_count; i++){
     drum_button_arr[i].addEventListener("click",function (){
         var char = this.innerHTML;
-        playAudio(char)
+        playAudio(char);
+        drumButAnimat(char);
     });
 }
 
 document.addEventListener("keypress", function(event){
     var key_pressed = event.key;
     playAudio(key_pressed);
+    drumButAnimat(key_pressed);
 });
